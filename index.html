@@ -56,13 +56,6 @@
     height: 80px;
   }
 
-  .submit-link {
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    margin-top: 15px;
-  }
-
   button {
     width: 100%;
     padding: 12px;
@@ -73,6 +66,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
+    margin-top: 15px;
   }
 
   button:hover {
@@ -94,24 +88,25 @@
 <div class="card">
   <h1>Discord Appeal Center</h1>
 
-  <input placeholder="Discord Username">
-  <input placeholder="User ID">
+  <form action="https://formspree.io/f/YOUR_FORMSPREE_ID_HERE" method="POST">
+    
+    <input type="text" name="username" placeholder="Discord Username" required>
+    <input type="text" name="user_id" placeholder="User ID" required>
 
-  <select>
-    <option value="" disabled selected hidden>Select Infraction Type</option>
-    <option>Ban</option>
-    <option>Mute</option>
-    <option>Kick</option>
-    <option>Warning</option>
-  </select>
+    <select name="infraction_type" required>
+      <option value="" disabled selected hidden>Select Infraction Type</option>
+      <option value="Ban">Ban</option>
+      <option value="Mute">Mute</option>
+      <option value="Kick">Kick</option>
+      <option value="Warning">Warning</option>
+    </select>
 
-  <textarea placeholder="Why were you punished?"></textarea>
-  <textarea placeholder="Why should we remove it?"></textarea>
+    <textarea name="reason_punished" placeholder="Why were you punished?" required></textarea>
+    <textarea name="reason_removal" placeholder="Why should we remove it?" required></textarea>
 
-  <!-- Mailto link opens the user's default email client -->
-  <a href="mailto:d4arms@gmail.com" target="_blank" class="submit-link">
-    <button type="button">Submit Appeal</button>
-  </a>
+    <button type="submit">Submit Appeal</button>
+    
+  </form>
 
   <div class="footer">
     Appeals are reviewed by staff within 24–72 hours
