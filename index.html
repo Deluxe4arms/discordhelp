@@ -5,6 +5,10 @@
 <title>Appeal Center</title>
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -42,14 +46,25 @@
     color: white;
   }
 
+  select option {
+    background: #1a1a2e;
+    color: white;
+  }
+
   textarea {
     resize: none;
     height: 80px;
   }
 
-  button {
+  .submit-link {
+    text-decoration: none;
+    display: block;
     width: 100%;
     margin-top: 15px;
+  }
+
+  button {
+    width: 100%;
     padding: 12px;
     border: none;
     border-radius: 10px;
@@ -67,7 +82,7 @@
 
   .footer {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 12px;
     opacity: 0.6;
   }
@@ -83,6 +98,7 @@
   <input placeholder="User ID">
 
   <select>
+    <option value="" disabled selected hidden>Select Infraction Type</option>
     <option>Ban</option>
     <option>Mute</option>
     <option>Kick</option>
@@ -92,7 +108,10 @@
   <textarea placeholder="Why were you punished?"></textarea>
   <textarea placeholder="Why should we remove it?"></textarea>
 
-  <button>Submit Appeal</button>
+  <!-- Mailto link opens the user's default email client -->
+  <a href="mailto:d4arms@gmail.com" target="_blank" class="submit-link">
+    <button type="button">Submit Appeal</button>
+  </a>
 
   <div class="footer">
     Appeals are reviewed by staff within 24–72 hours
