@@ -1,117 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Appeal Center</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appeal Center</title>
 
-<style>
-  * {
-    box-sizing: border-box;
-  }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Changed to min-height to prevent cutoff on small mobile screens */
+      padding: 20px; /* Added padding so the card doesn't touch the screen edges on mobile */
+    }
 
-  .card {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
-    padding: 30px;
-    border-radius: 16px;
-    width: 350px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
-  }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); /* Safari support for backdrop-filter */
+      padding: 30px;
+      border-radius: 16px;
+      width: 100%; /* Changed to 100% to fill container... */
+      max-width: 350px; /* ...but max out at 350px for responsive sizing */
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    }
 
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 22px;
-  }
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
 
-  input, textarea, select {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    background: rgba(255,255,255,0.1);
-    color: white;
-  }
+    input, textarea, select {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-family: inherit; /* Ensures inputs use the body font */
+    }
 
-  select option {
-    background: #1a1a2e;
-    color: white;
-  }
+    /* Target the placeholder text to ensure it contrasts well */
+    ::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
 
-  textarea {
-    resize: none;
-    height: 80px;
-  }
+    select option {
+      background: #1a1a2e;
+      color: white;
+    }
 
-  button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    background: #5865F2;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-    margin-top: 15px;
-  }
+    textarea {
+      resize: vertical; /* Allows resizing vertically, but not horizontally breaking the layout */
+      min-height: 80px;
+    }
 
-  button:hover {
-    background: #4752c4;
-    transform: scale(1.03);
-  }
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #5865F2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 15px;
+    }
 
-  .footer {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 12px;
-    opacity: 0.6;
-  }
-</style>
+    button:hover, button:focus-visible {
+      background: #4752c4;
+      transform: scale(1.03);
+      outline: none;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
 
 </head>
 <body>
 
-<div class="card">
-  <h1>Discord Appeal Center</h1>
+  <div class="card">
+    <h1>Discord Appeal Center</h1>
 
-  <form action="https://formspree.io/f/YOUR_FORMSPREE_ID_HERE" method="POST">
-    
-    <input type="text" name="username" placeholder="Discord Username" required>
-    <input type="text" name="user_id" placeholder="User ID" required>
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID_HERE" method="POST">
+      
+      <input type="text" name="username" aria-label="Discord Username" placeholder="Discord Username" required>
+      <input type="text" name="user_id" aria-label="User ID" placeholder="User ID" required>
 
-    <select name="infraction_type" required>
-      <option value="" disabled selected hidden>Select Infraction Type</option>
-      <option value="Ban">Ban</option>
-      <option value="Mute">Mute</option>
-      <option value="Kick">Kick</option>
-      <option value="Warning">Warning</option>
-    </select>
+      <select name="infraction_type" aria-label="Infraction Type" required>
+        <option value="" disabled selected hidden>Select Infraction Type</option>
+        <option value="Ban">Ban</option>
+        <option value="Mute">Mute</option>
+        <option value="Kick">Kick</option>
+        <option value="Warning">Warning</option>
+      </select>
 
-    <textarea name="reason_punished" placeholder="Why were you punished?" required></textarea>
-    <textarea name="reason_removal" placeholder="Why should we remove it?" required></textarea>
+      <textarea name="reason_punished" aria-label="Why were you punished?" placeholder="Why were you punished?" required></textarea>
+      <textarea name="reason_removal" aria-label="Why should we remove the punishment?" placeholder="Why should we remove it?" required></textarea>
 
-    <button type="submit">Submit Appeal</button>
-    
-  </form>
+      <button type="submit">Submit Appeal</button>
+      
+    </form>
 
-  <div class="footer">
-    Appeals are reviewed by staff within 24–72 hours
+    <div class="footer">
+      Appeals are reviewed by staff within 24–72 hours
+    </div>
   </div>
-</div>
 
 </body>
 </html>
