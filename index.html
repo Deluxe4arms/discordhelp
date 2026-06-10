@@ -14,22 +14,29 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+      
+      /* Full background fit all properties */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh; /* Changed to min-height to prevent cutoff on small mobile screens */
-      padding: 20px; /* Added padding so the card doesn't touch the screen edges on mobile */
+      min-height: 100vh; 
+      padding: 20px; 
     }
 
     .card {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px); /* Safari support for backdrop-filter */
+      -webkit-backdrop-filter: blur(10px);
       padding: 30px;
       border-radius: 16px;
-      width: 100%; /* Changed to 100% to fill container... */
-      max-width: 350px; /* ...but max out at 350px for responsive sizing */
+      width: 100%;
+      max-width: 350px;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
     }
 
@@ -49,10 +56,9 @@
       outline: none;
       background: rgba(255, 255, 255, 0.1);
       color: white;
-      font-family: inherit; /* Ensures inputs use the body font */
+      font-family: inherit;
     }
 
-    /* Target the placeholder text to ensure it contrasts well */
     ::placeholder {
       color: rgba(255, 255, 255, 0.6);
     }
@@ -63,7 +69,7 @@
     }
 
     textarea {
-      resize: vertical; /* Allows resizing vertically, but not horizontally breaking the layout */
+      resize: vertical;
       min-height: 80px;
     }
 
